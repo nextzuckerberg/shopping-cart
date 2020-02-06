@@ -34,3 +34,8 @@ products = [
 product_id = input("Please input a product identifier")
 
 print(product_id)
+
+matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
+matching_product = matching_products[0]
+
+print("Selected product:" + matching_product["name"] + str(matching_product["price"]))
