@@ -2,6 +2,9 @@
 
 #from pprint import pprint
 
+import datetime
+now = datetime.datetime.now()
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -44,12 +47,21 @@ while True:
         
         product_ids.append(product_id)
 
+now = datetime.datetime.now()
+print("-------------------")
+print("PIED PIPER GROCERY")
+print("WWW.PIED-PIPER.COM")
+print("-------------------")
+print("CHECKOUT At:")
+print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
+print("-------------------")
+print("SELECTED PRODUCTS")
 
 for product_id in product_ids:
     matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print("Selected product:" + matching_product["name"] + str(matching_product["price"]))
+    print(matching_product["name"] + str(matching_product["price"]))
 
 
 print("Total Price: " + str(total_price))
