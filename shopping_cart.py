@@ -5,6 +5,17 @@
 import datetime
 now = datetime.datetime.now()
 
+
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+    Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
+    Param: my_price (int or float) like 4000.444444
+    Example: to_usd(4000.444444)
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -38,7 +49,7 @@ product_ids =[]
 
 while True:
     
-    product_id = input("Please input a product identifier")
+    product_id = input("Please input a product identifier ")
 
     if product_id == "Done":
         break
@@ -52,7 +63,7 @@ print("-------------------")
 print("PIED PIPER GROCERY")
 print("WWW.PIED-PIPER.COM")
 print("-------------------")
-print("CHECKOUT At:")
+print("CHECKOUT AT:")
 print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
 print("-------------------")
 print("SELECTED PRODUCTS")
@@ -60,8 +71,22 @@ print("SELECTED PRODUCTS")
 for product_id in product_ids:
     matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
     matching_product = matching_products[0]
-    total_price = total_price + matching_product["price"]
-    print(matching_product["name"] + str(matching_product["price"]))
 
 
-print("Total Price: " + str(total_price))
+    total_price = total_price + ((matching_product["price"]))
+
+    price = to_usd(matching_product["price"])
+    
+    print("..." + matching_product["name"] + " (" + price +")")
+
+taxes = total_price*0.0875
+total = taxes + total_price
+
+
+print("-------------------")
+print("SUBTOTAL: " + to_usd(total_price))
+print("TAX: " + to_usd(taxes))
+print("TOTAL: " + to_usd(total))
+print("-------------------")
+print("THANKS, SEE YOU AGAIN SOON!")
+print("-------------------")
