@@ -30,6 +30,7 @@ products = [
 
 # TODO: write some Python code here to produce the desired output
 
+total_price = 0
 
 while True:
     
@@ -40,5 +41,9 @@ while True:
     else:
         matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
         matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
 
         print("Selected product:" + matching_product["name"] + str(matching_product["price"]))
+
+
+print("Total Price: " + str(total_price))
