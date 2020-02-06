@@ -49,10 +49,13 @@ product_ids =[]
 
 while True:
     
-    product_id = input("Please input a product identifier ")
+    product_id = input("Please input a product identifier or 'Done' if you are finished: ")
+    product_id = product_id.lower().title()
 
     if product_id == "Done":
         break
+    elif int(product_id) <1 or int(product_id) > len(products):
+        print("Sorry, wrong")
     else:
         
         
