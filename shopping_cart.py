@@ -55,7 +55,7 @@ while True:
     if product_id == "Done":
         break
     elif int(product_id) <1 or int(product_id) > len(products):
-        print("Sorry, wrong")
+        print("Sorry, this is not a valid id for a product. Please try again.")
     else:
         
         
