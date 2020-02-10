@@ -17,7 +17,7 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 products = [
-    {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
+    {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50, "items":0},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
     {"id":4, "name": "Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce", "department": "frozen", "aisle": "frozen meals", "price": 6.99},
@@ -36,8 +36,11 @@ products = [
     {"id":17, "name": "Rendered Duck Fat", "department": "meat seafood", "aisle": "poultry counter", "price": 9.99},
     {"id":18, "name": "Pizza for One Suprema Frozen Pizza", "department": "frozen", "aisle": "frozen pizza", "price": 12.50},
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
-    {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
-] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
+    {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25},
+    {"id":21, "name": "Organic Bananas", "price_perpound": 0.79, "price": 0}
+] 
+
+# based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 #print(products)
 # pprint(products)
@@ -45,8 +48,8 @@ products = [
 # TODO: write some Python code here to produce the desired output
 
 total_price = 0
-selected_ids =[]
-product_ids =[str(p["id"]) for p in products]
+product_ids =[]
+items_number =[]
 
 while True:
     
@@ -55,12 +58,14 @@ while True:
 
     if product_id == "Done":
         break
-    
-    elif product_id in product_ids:
-        selected_ids.append(product_id)
+    elif int(product_id) <1 or int(product_id) > len(products):
+        print("Sorry, this is not a valid id for a product. Please try again.")
     else:
-        print ("invalid entry")
+        items = input("Please input number of items")
 
+        
+        
+        product_ids.append(product_id)
 
 now = datetime.datetime.now()
 print("-------------------")
@@ -72,12 +77,11 @@ print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/
 print("-------------------")
 print("SELECTED PRODUCTS")
 
-for product_id in selected_ids:
+for product_id in product_ids:
     matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
     matching_product = matching_products[0]
 
-
-    total_price = total_price + ((matching_product["price"]))
+    total_price = total_price + ((matching_product["price"]))*(matching_product["items"])
 
     price = to_usd(matching_product["price"])
     
@@ -95,3 +99,5 @@ print("-------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
 print("-------------------")
 
+print(matching_product)
+print(items_number)
