@@ -5,7 +5,9 @@ Fork it, clone it (choose a familiar download location such as Desktop). Then, n
 ``'
 ## Setup
 Consider creating a virtual environment called something like shopping-env:
-    conda create -n shopping-env python=3.7 # (first time only)
+```sh
+conda create -n shopping-env python=3.7 # (first time only)
+```
 Then, activate your virtual environment:
     conda activate shopping-env
 However, the code should work in your base environment
