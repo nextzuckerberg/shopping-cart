@@ -1,8 +1,8 @@
-# my project
+# Shopping Cart Rroject
 ## Installation
-Fork it, clone it (choose a familiar download location such as Desktop). Then, navigate to your repository using from command line:
+Fork this repository, clone it (choose a familiar download location such as Desktop). Then, navigate to your repository using from command line:
 ```sh
-cd ~/Desktop/shopping-cart
+cd ~/'download location'/shopping-cart
 ```
 ## Setup
 Consider creating a virtual environment called something like shopping-env:
