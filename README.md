@@ -1,4 +1,4 @@
-# Shopping Cart Rroject
+# Shopping Cart Project
 ## Installation
 Fork this repository, clone it (choose a familiar download location such as Desktop). Then, navigate to your repository from command line:
 ```sh
@@ -24,5 +24,5 @@ No you should be able to enter the ids of the selected products.
 Once you are done, type "Done"
 The script will return the receipt including all the selected items
 
-if you have any questions regarding the application, please contact me at grocery@piedpider.edu
+if you have any questions regarding the application, please contact me at grocery@piedpiper.edu
 
