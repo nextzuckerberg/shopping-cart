@@ -1,6 +1,5 @@
-# shopping_cart.py
 
-#from pprint import pprint
+# shopping_cart.py
 
 import datetime
 now = datetime.datetime.now()
@@ -39,14 +38,11 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-#print(products)
-# pprint(products)
 
-# TODO: write some Python code here to produce the desired output
 
 total_price = 0
 selected_ids =[]
-product_ids =[str(p["id"]) for p in products]
+product_ids =[str(p["id"]) for p in products] #creating a list including all valid ids
 
 while True:
     
@@ -59,7 +55,7 @@ while True:
     elif product_id in product_ids:
         selected_ids.append(product_id)
     else:
-        print ("invalid entry")
+        print ("Invalid entry. Please try again.")
 
 
 now = datetime.datetime.now()
@@ -70,7 +66,7 @@ print("-------------------")
 print("CHECKOUT AT:")
 print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
 print("-------------------")
-print("SELECTED PRODUCTS")
+print("SELECTED PRODUCTS:")
 
 for product_id in selected_ids:
     matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
