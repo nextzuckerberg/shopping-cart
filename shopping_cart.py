@@ -38,8 +38,11 @@ def tax(rate, total):
 def calculate_total_price(total, taxes):
     total_price = total + taxes
     return total_price
-    
 
+#function used to calculate the total balance before taxes    
+def subtotal(balance,selected_product):
+    balance = balance + ((selected_product["price"]))
+    return balance
     
 
 
@@ -67,7 +70,6 @@ if __name__ == "__main__":
         {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
         {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
-
 
 
     total_price = 0
@@ -100,17 +102,15 @@ if __name__ == "__main__":
 
     for product_id in selected_ids:
         matching_product  = find_product(product_id, products)
-        total_price = total_price + ((matching_product["price"]))
+        totall = subtotal(total_price,matching_product)
         price = to_usd(matching_product["price"])
         print("..." + matching_product["name"] + " (" + price +")")
 
-    
-    taxes = tax(Tax_Rate, total_price)
-    total = calculate_total_price(taxes,total_price)
-
+    taxes = tax(Tax_Rate, totall)
+    total = calculate_total_price(taxes,totall)
 
     print(divider())
-    print("SUBTOTAL: " + to_usd(total_price))
+    print("SUBTOTAL: " + to_usd(totall))
     print("TAX: " + to_usd(taxes))
     print("TOTAL: " + to_usd(total))
     print(divider())
