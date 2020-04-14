@@ -4,6 +4,7 @@
 import datetime
 now = datetime.datetime.now()
 
+Tax_Rate = 0.06
 
 def to_usd(my_price):
     """
@@ -86,7 +87,7 @@ if __name__ == "__main__":
         
         print("..." + matching_product["name"] + " (" + price +")")
 
-    taxes = total_price*0.0875
+    taxes = total_price*Tax_Rate
     total = taxes + total_price
 
 
