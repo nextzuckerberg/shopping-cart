@@ -4,7 +4,7 @@
 import datetime
 now = datetime.datetime.now()
 
-Tax_Rate = 0.06
+Tax_Rate = 0.066
 
 def to_usd(my_price):
     """
