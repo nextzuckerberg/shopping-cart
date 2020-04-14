@@ -41,7 +41,8 @@ def test_tax():
 def test_calculate_total_price():
     assert calculate_total_price (3.21, 10) == 13.21
 
-
 def test_subtotal():
-    selected_product = {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50}
-    assert subtotal (0, selected_product) == 3.50
+    selected_product =  {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49}
+    assert subtotal (0, selected_product) == 2.49
+
+
