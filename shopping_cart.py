@@ -2,7 +2,7 @@
 # shopping_cart.py
 
 import datetime
-now = datetime.datetime.now()
+
 
 Tax_Rate = 0.06
 
@@ -16,10 +16,36 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" #> $12,000.71
 
-
+#simple function to make sure dividers are of equal length
 def divider():
     return "-------------------"
 
+# looks up a product given its unique identifier
+# ... from a provided list of products
+def find_product(product_id, all_products):
+    matching_products = [p for p in all_products if str(p["id"]) == str(product_id)]
+    matching_product = matching_products[0]
+    return matching_product
+
+#very simple function that calculates taxes based on total and the tax rate
+def tax(rate, total):
+    taxes = rate * total
+    return taxes
+
+#another very simple function that calculates the total price based on total and taxes
+def calculate_total_price(total, taxes):
+    total_price = total + taxes
+    return total_price
+
+#function used to calculate the total balance before taxes    
+def subtotal(balance,selected_product):
+    balance = balance + ((selected_product["price"]))
+    return balance
+
+#def human_friendly_timestamp():
+    #now = datetime.datetime.now()
+    #date = now.strftime("%Y-%m-%d %I:%M %p")
+    #return date
 
 if __name__ == "__main__":
 
@@ -46,8 +72,6 @@ if __name__ == "__main__":
         {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-
-
     total_price = 0
     selected_ids =[]
     product_ids =[str(p["id"]) for p in products] #creating a list including all valid ids
@@ -73,29 +97,23 @@ if __name__ == "__main__":
     print(divider())
     print("CHECKOUT AT:")
     print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
+    #print(human_friendly_timestamp())
     print(divider())
     print("SELECTED PRODUCTS:")
 
     for product_id in selected_ids:
-        matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
-        matching_product = matching_products[0]
-
-
-        total_price = total_price + ((matching_product["price"]))
-
+        matching_product  = find_product(product_id, products)
+        totall = subtotal(total_price,matching_product)
         price = to_usd(matching_product["price"])
-        
         print("..." + matching_product["name"] + " (" + price +")")
 
-    taxes = total_price*Tax_Rate
-    total = taxes + total_price
-
+    taxes = tax(Tax_Rate, totall)
+    total = calculate_total_price(taxes,totall)
 
     print(divider())
-    print("SUBTOTAL: " + to_usd(total_price))
+    print("SUBTOTAL: " + to_usd(totall))
     print("TAX: " + to_usd(taxes))
     print("TOTAL: " + to_usd(total))
     print(divider())
     print("THANKS, SEE YOU AGAIN SOON!")
     print(divider())
-
