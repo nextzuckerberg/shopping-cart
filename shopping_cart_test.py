@@ -1,6 +1,6 @@
 import pytest # for pytest.raises (see: https://docs.pytest.org/en/latest/assert.html)
 
-from shopping_cart import to_usd, Tax_Rate, find_product
+from shopping_cart import to_usd, Tax_Rate, find_product, tax, calculate_total_price
 
 def test_tax_rate():
     assert(Tax_Rate) == 0.06
@@ -34,3 +34,11 @@ def test_find_product():
     # if there is no match, it should raise an IndexError
     with pytest.raises(IndexError):
         find_product("2222", products)
+
+
+def test_tax():
+    assert tax(0.05,100) == 5
+
+
+def test_calculate_total_price():
+    assert calculate_total_price (3.21, 10) == 13.21

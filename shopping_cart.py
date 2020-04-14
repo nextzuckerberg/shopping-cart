@@ -28,6 +28,20 @@ def find_product(product_id, all_products):
     matching_product = matching_products[0]
     return matching_product
 
+#very simple function that calculates taxes based on total and the tax rate
+def tax(rate, total):
+    taxes = rate * total
+    return taxes
+
+
+#another very simple function that calculates the total price based on total and taxes
+def calculate_total_price(total, taxes):
+    total_price = total + taxes
+    return total_price
+    
+
+    
+
 
 if __name__ == "__main__":
 
@@ -90,8 +104,9 @@ if __name__ == "__main__":
         price = to_usd(matching_product["price"])
         print("..." + matching_product["name"] + " (" + price +")")
 
-    taxes = total_price*Tax_Rate
-    total = taxes + total_price
+    
+    taxes = tax(Tax_Rate, total_price)
+    total = calculate_total_price(taxes,total_price)
 
 
     print(divider())
