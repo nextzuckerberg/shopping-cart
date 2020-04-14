@@ -21,6 +21,14 @@ def divider():
     return "-------------------"
 
 
+# looks up a product given its unique identifier
+# ... from a provided list of products
+def find_product(product_id, all_products):
+    matching_products = [p for p in all_products if str(p["id"]) == str(product_id)]
+    matching_product = matching_products[0]
+    return matching_product
+
+
 if __name__ == "__main__":
 
     products = [
@@ -77,14 +85,9 @@ if __name__ == "__main__":
     print("SELECTED PRODUCTS:")
 
     for product_id in selected_ids:
-        matching_products  = [product for product in products if str(product["id"]) == str(product_id)]
-        matching_product = matching_products[0]
-
-
+        matching_product  = find_product(product_id, products)
         total_price = total_price + ((matching_product["price"]))
-
         price = to_usd(matching_product["price"])
-        
         print("..." + matching_product["name"] + " (" + price +")")
 
     taxes = total_price*Tax_Rate
@@ -98,5 +101,3 @@ if __name__ == "__main__":
     print(divider())
     print("THANKS, SEE YOU AGAIN SOON!")
     print(divider())
-
-    print ("Adam ")
