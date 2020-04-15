@@ -5,7 +5,6 @@ from shopping_cart import to_usd, Tax_Rate, find_product, tax, calculate_total_p
 def test_tax_rate():
     assert(Tax_Rate) == 0.06
 
-
 def test_to_usd():
     # it should apply USD formatting
     assert to_usd(4.50) == "$4.50"
@@ -18,7 +17,6 @@ def test_to_usd():
 
     # it should display thousands separators
     assert to_usd(1234567890.5555555) == "$1,234,567,890.56"
-
 
 def test_find_product():
     products = [
@@ -47,5 +45,3 @@ def test_subtotal():
 
 def test_divider():
     assert divider() == "-------------------"
-
-
