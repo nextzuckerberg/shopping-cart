@@ -3,49 +3,93 @@
 
 import datetime
 
-
 Tax_Rate = 0.06
 
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
+
     Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
+
     Param: my_price (int or float) like 4000.444444
+
     Example: to_usd(4000.444444)
+
     Returns: $4,000.44
     """
-    return f"${my_price:,.2f}" #> $12,000.71
+    return f"${my_price:,.2f}"
 
-#simple function to make sure dividers are of equal length
 def divider():
+    """
+    Returns a divider for displaying purposes.
+
+    Example: divider()
+
+    Returns: -------------------
+    """
     return "-------------------"
 
-# looks up a product given its unique identifier
-# ... from a provided list of products
 def find_product(product_id, all_products):
+    """
+    Looks up a product given its unique identifier from a provided list of products.
+
+    Source: https://github.com/s2t2/shopping-cart-screencast/blob/testing/shopping_cart.py
+
+    Params: 
+        my_price (int) like 8
+        all_products (list)
+    Example (given the prodcuts list in this file): to_usd(5, products)
+
+    Returns: {'id': 5, 'name': 'Green Chile Anytime Sauce', 'department': 'pantry', 'aisle': 'marinades meat preparation', 'price': 7.99}
+    """
     matching_products = [p for p in all_products if str(p["id"]) == str(product_id)]
     matching_product = matching_products[0]
     return matching_product
 
-#very simple function that calculates taxes based on total and the tax rate
 def tax(rate, total):
+    """
+    Returns the tax amount given the tax rate and pretax total.
+
+    Params: 
+        rate (float) like 0.08 
+        total(integer or float) like 150
+
+    Example: to_usd(0.08,100)
+
+    Returns: 8
+    """
     taxes = rate * total
     return taxes
 
-#another very simple function that calculates the total price based on total and taxes
 def calculate_total_price(total, taxes):
+    """
+    Returns the total amount to pay given taxes and pretax amount.
+
+    Params: 
+        total (int or float) like 120
+        taxes (int or float) like 13.25
+
+    Example: calculate_total_price(35, 4.99)
+
+    Returns: 39.99
+    """
     total_price = total + taxes
     return total_price
-
-#function used to calculate the total balance before taxes    
+  
 def subtotal(balance,selected_product):
+    """
+    Calculates the balance given the initial balance and the price of the selected group. The function is useful in a loop to keep track of the balance given selected products.
+    
+    Params:
+        balance (int or float) like 0
+        selected_product (int or float) like 3.49
+
+    Example: to_usd(0, 5.99)
+
+    Returns: 5.99
+    """
     balance = balance + ((selected_product["price"]))
     return balance
-
-#def human_friendly_timestamp():
-    #now = datetime.datetime.now()
-    #date = now.strftime("%Y-%m-%d %I:%M %p")
-    #return date
 
 if __name__ == "__main__":
 
@@ -83,12 +127,10 @@ if __name__ == "__main__":
 
         if product_id == "Done":
             break
-        
         elif product_id in product_ids:
             selected_ids.append(product_id)
         else:
             print ("Invalid entry. Please try again.")
-
 
     now = datetime.datetime.now()
     print(divider())

@@ -1,6 +1,6 @@
 import pytest # for pytest.raises (see: https://docs.pytest.org/en/latest/assert.html)
 
-from shopping_cart import to_usd, Tax_Rate, find_product, tax, calculate_total_price, subtotal
+from shopping_cart import to_usd, Tax_Rate, find_product, tax, calculate_total_price, subtotal, divider
 
 def test_tax_rate():
     assert(Tax_Rate) == 0.06
@@ -44,5 +44,8 @@ def test_calculate_total_price():
 def test_subtotal():
     selected_product =  {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49}
     assert subtotal (0, selected_product) == 2.49
+
+def test_divider():
+    assert divider() == "-------------------"
 
 
