@@ -26,7 +26,7 @@ The script will return the receipt including all the selected items
 
 ## Testing
 
-Install the pytest package with a virtual environment:
+Install the ```pytest``` package with a virtual environment:
 ```sh
 pip install pytest
 ```
@@ -34,6 +34,8 @@ Run tests:
 ```sh
 pytest
 ```
+
+## Help
 
 if you have any questions regarding the application, please contact me at grocery@piedpiper.edu
 
