@@ -120,6 +120,8 @@ if __name__ == "__main__":
     selected_ids =[]
     product_ids =[str(p["id"]) for p in products] #creating a list including all valid ids
 
+    #Input Collection and Validation
+
     while True:
         
         product_id = input("Please input a product identifier or 'Done' if you are finished: ")
@@ -132,6 +134,9 @@ if __name__ == "__main__":
         else:
             print ("Invalid entry. Please try again.")
 
+
+    #Presentation of Final Outcome
+
     now = datetime.datetime.now()
     print(divider())
     print("PIED PIPER GROCERY")
@@ -139,7 +144,6 @@ if __name__ == "__main__":
     print(divider())
     print("CHECKOUT AT:")
     print(now.strftime("%Y-%m-%d %I:%M %p")) #taken from https://www.saltycrane.com/blog/2008/06/how-to-get-current-date-and-time-in/
-    #print(human_friendly_timestamp())
     print(divider())
     print("SELECTED PRODUCTS:")
 
